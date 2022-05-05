@@ -5,7 +5,7 @@ import passengers.Passenger;
 import java.util.List;
 
 public class Flight {
-    private int flightID;
+    private String flightID;
     private int capacity;
     private Location departure;
     private Location destination;
@@ -14,7 +14,7 @@ public class Flight {
     // add flight company + constructor + getter/setter + toString();
 
 
-    public Flight(int flightID, int capacity, Location departure, Location destination, List<Passenger> passengers, boolean isAvailable) {
+    public Flight(String flightID, int capacity, Location departure, Location destination, boolean isAvailable) {
         this.flightID = flightID;
         this.capacity = capacity;
         this.departure = departure;
@@ -23,11 +23,11 @@ public class Flight {
         this.isAvailable = true;
     }
 
-    public int getFlightID() {
+    public String getFlightID() {
         return flightID;
     }
 
-    public void setFlightID(int flightID) {
+    public void setFlightID(String flightID) {
         this.flightID = flightID;
     }
 

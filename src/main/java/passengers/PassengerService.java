@@ -1,7 +1,6 @@
 package passengers;
 
 import bookingSystems.BookingSystem;
-import flights.Flight;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -9,6 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PassengerService {
+
+    private Passenger passenger;
 
     BookingSystem bookingSystem = new BookingSystem();
 
@@ -22,7 +23,7 @@ public class PassengerService {
     //-------------------------------- Add Passenger Method (Sabina) -------------------------------\\
 
     public Passenger addPassenger() {
-        System.out.println("What is the passenger's name?");
+        System.out.println("Please enter the passenger's name:");
         Scanner scanner = new Scanner(System.in);
         String passengerName = scanner.nextLine();
 
@@ -58,8 +59,8 @@ public class PassengerService {
         Object selection = JOptionPane.showInputDialog(null, "Select your gender", "Gender",
                 JOptionPane.INFORMATION_MESSAGE, null, Gender.values(), Gender.values()[0]);
         Gender gender = Gender.valueOf(selection.toString());
-
         System.out.println(selection);
+
 
         System.out.println("Please select your nationality");
         Object selection2 = JOptionPane.showInputDialog(null, "Choose your nationality",
@@ -70,18 +71,45 @@ public class PassengerService {
         Passenger passenger = new Passenger(passengerName, telNumber, passportNumber, gender, nationality);
         System.out.println(passenger);
 
+        List<Passenger> passengerList = bookingSystem.getAllPassengers();
 
         try {
-            List<Passenger> passengerList = bookingSystem.getAllPassengers();
             passengerList.add(passenger);
         } catch(NullPointerException nullPointerException) {
             System.out.println("Error: Unable to register passenger. Please try again later. ");
         }
+
         return passenger;
     }
 
 
     //----------------------- Remove Passenger Method (Sabina) -------------------------------\\
 
+    public List<Passenger> removePassenger() {
+        List<Passenger> passengerList = bookingSystem.getAllPassengers();
+        List<Passenger> newPassengerList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        Passenger passenger = new Passenger("s", "12345678900", "123456", Gender.FEMALE, Nationality.AMERICAN);
+        Passenger passenger1 = new Passenger("n", "09876543211", "654321", Gender.FEMALE, Nationality.AMERICAN);
+        Passenger passenger2 = new Passenger("p", "09876543211", "876543", Gender.FEMALE, Nationality.AMERICAN);
+
+        passengerList.add(passenger);
+        passengerList.add(passenger1);
+        passengerList.add(passenger2);
+
+        System.out.println("Please enter the passport number of the passenger you'd like to remove:");
+        String testID = scanner.nextLine();
+
+        for(int i = 01; i < passengerList.size(); i++){
+            Passenger passengerCheck = passengerList.get(i);
+
+            if(!passengerCheck.getPassportNumber().equals(testID)){
+                newPassengerList.add(passengerCheck);
+            }
+        }
+        bookingSystem.setAllPassengers(newPassengerList);
+        return bookingSystem.getAllPassengers();
+    }
 
 }
