@@ -53,7 +53,7 @@ public class Service {
                 JOptionPane.INFORMATION_MESSAGE, null, Location.values(), Location.values()[0]);
 
 
-        while(departure == destination){
+        while (departure == destination) {
             System.out.println("Error: Destination cannot be the same as the departure location. Please select the destination.");
             destination = JOptionPane.showInputDialog(null, "Select your flight destination", "Location",
                     JOptionPane.INFORMATION_MESSAGE, null, Location.values(), Location.values()[0]);
@@ -70,7 +70,7 @@ public class Service {
 
         try {
             flightList.add(flight);
-        } catch(NullPointerException nullPointerException) {
+        } catch (NullPointerException nullPointerException) {
             System.out.println("Error: Unable to add flight. Please try again later. ");
         }
         System.out.println("The flight has been added successfully!");
@@ -99,10 +99,10 @@ public class Service {
         System.out.println("Please enter the flight ID you'd like to remove:");
         String testID = scanner.nextLine();
 
-        for(int i = 0; i < flightList.size(); i++){
+        for (int i = 0; i < flightList.size(); i++) {
             Flight flightCheck = flightList.get(i);
 
-            if(!flightCheck.getFlightID().equals(testID)){
+            if (!flightCheck.getFlightID().equals(testID)) {
                 newFlightList.add(flightCheck);
             }
         }
@@ -175,7 +175,7 @@ public class Service {
 
         try {
             passengerList.add(passenger);
-        } catch(NullPointerException nullPointerException) {
+        } catch (NullPointerException nullPointerException) {
             System.out.println("Error: Unable to register passenger. Please try again later. ");
         }
         System.out.println("Passenger has been added successfully");
@@ -201,13 +201,14 @@ public class Service {
         System.out.println("Please enter the passport number of the passenger you'd like to remove:");
         String testID = scanner.nextLine();
 
-        for(int i = 0; i < passengerList.size(); i++){
+        for (int i = 0; i < passengerList.size(); i++) {
             Passenger passengerCheck = passengerList.get(i);
 
-            if(!passengerCheck.getPassportNumber().equals(testID)){
+            if (!passengerCheck.getPassportNumber().equals(testID)) {
                 newPassengerList.add(passengerCheck);
             }
-        }  System.out.println("Passenger with " + testID + " has been removed.");
+        }
+        System.out.println("Passenger with " + testID + " has been removed.");
 
         bookingSystem.setAllPassengers(newPassengerList);
         return bookingSystem.getAllPassengers();
@@ -215,7 +216,7 @@ public class Service {
 
     //-------------------------------- Book A Passenger On A Flight Method (Sabina) -------------------------------\\
 
-    public void bookPassengerOnFlight(){
+    public void bookPassengerOnFlight() {
         List<Passenger> passengerList = bookingSystem.getAllPassengers();
         List<Flight> flightList = bookingSystem.getAllFlights();
         List<Flight> availableFlightList = new ArrayList<>();
@@ -225,9 +226,9 @@ public class Service {
         String passportNumber = scanner.nextLine();
         Passenger passenger = null;
 
-        for(int i = 0; i < passengerList.size(); i++){
+        for (int i = 0; i < passengerList.size(); i++) {
             Passenger passengerCheck = passengerList.get(i);
-            if(passengerCheck.getPassportNumber().equals(passportNumber)){
+            if (passengerCheck.getPassportNumber().equals(passportNumber)) {
                 passenger = passengerList.get(i);
             }
         }
@@ -236,21 +237,21 @@ public class Service {
         String flightID = scanner.nextLine();
         Flight flight = null;
 
-        for(int i = 0; i < flightList.size(); i++){
+        for (int i = 0; i < flightList.size(); i++) {
             Flight flightCheck = flightList.get(i);
-            if(flightCheck.getFlightID().equals(flightID)){
+            if (flightCheck.getFlightID().equals(flightID)) {
                 flight = flightList.get(i);
             }
         }
 
-        if(flight.isAvailable()){
+        if (flight.isAvailable()) {
             List<Passenger> currentPassengerList = flight.getPassengers();
             currentPassengerList.add(passenger);
-            if(flight.getCapacity() == flight.getPassengers().size()){
+            if (flight.getCapacity() == flight.getPassengers().size()) {
                 flight.setAvailable(false);
-                for(int i = 0; i < bookingSystem.getAllFlights().size(); i++){
+                for (int i = 0; i < bookingSystem.getAllFlights().size(); i++) {
                     Flight flightCheck = flightList.get(i);
-                    if(!flightCheck.getFlightID().equals(flight.getFlightID())){
+                    if (!flightCheck.getFlightID().equals(flight.getFlightID())) {
                         availableFlightList.add(flightList.get(i));
                     }
                 }
