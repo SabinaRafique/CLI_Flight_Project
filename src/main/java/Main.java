@@ -24,7 +24,7 @@ public class Main {
             System.out.println("[4] Add new Flight");
             System.out.println("[5] Book passenger onto flight");
             System.out.println("[6] Remove Passenger from Flight");
-            System.out.println("[0] Exit");
+            System.out.println("[7] Exit");
             System.out.println("Please select a number to choose an option:");
 
             userSelection = scanner.nextInt();
@@ -49,7 +49,7 @@ public class Main {
                     service.removePassenger();
                     break;
 
-                case 0:
+                case 7:
                     System.out.println("\nExit");
                     exit = true;
                     break;
