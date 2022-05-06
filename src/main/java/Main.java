@@ -1,21 +1,17 @@
-import flights.Flight;
-import flights.FlightService;
-import passengers.Passenger;
-import passengers.PassengerService;
-
-import java.util.List;
+import bookingSystems.BookingSystem;
+import services.Service;
 
 public class Main {
 
 
     public static void main(String[] args) {
-        PassengerService passengerService = new PassengerService();
-        Passenger passenger = passengerService.addPassenger();
+        BookingSystem bookingSystem = new BookingSystem();
+        Service service = new Service();
 
-        List<Passenger> passengerList = passengerService.removePassenger();
-
-        FlightService flightService = new FlightService();
-        Flight flight = flightService.addFlight();
+        service.addFlight();
+        service.addPassenger();
+        service.bookPassengerOnFlight();
+//        service.displayAvailableFlights();
 
     }
 }

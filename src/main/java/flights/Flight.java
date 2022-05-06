@@ -2,6 +2,7 @@ package flights;
 
 import passengers.Passenger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Flight {
@@ -19,7 +20,7 @@ public class Flight {
         this.capacity = capacity;
         this.departure = departure;
         this.destination = destination;
-        this.passengers = passengers;
+        this.passengers = new ArrayList<>();
         this.isAvailable = true;
     }
 

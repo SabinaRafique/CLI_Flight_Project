@@ -2,7 +2,9 @@ package passengers;
 
 import flights.Flight;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Passenger {
@@ -12,7 +14,6 @@ public class Passenger {
     private String passengerID;
     private Gender gender;
     private Nationality nationality;
-    private List<Flight> flights;
 
     public Passenger(String name, String telNumber, String passportNumber, Gender gender, Nationality nationality) {
         this.name = name;
@@ -21,7 +22,6 @@ public class Passenger {
         this.passengerID = UUID.randomUUID().toString();
         this.gender = gender;
         this.nationality = nationality;
-        this.flights = flights;
     }
 
     public String getName() {
@@ -52,6 +52,10 @@ public class Passenger {
         return passengerID;
     }
 
+    public void setPassengerID(String passengerID) {
+        this.passengerID = passengerID;
+    }
+
     public Gender getGender() {
         return gender;
     }
@@ -60,20 +64,12 @@ public class Passenger {
         this.gender = gender;
     }
 
-    public Nationality getCitizenship() {
+    public Nationality getNationality() {
         return nationality;
     }
 
-    public void setCitizenship(Nationality nationality) {
+    public void setNationality(Nationality nationality) {
         this.nationality = nationality;
-    }
-
-    public List<Flight> getFlights() {
-        return flights;
-    }
-
-    public void setFlights(List<Flight> flights) {
-        this.flights = flights;
     }
 
     @Override
@@ -84,8 +80,7 @@ public class Passenger {
                 ", passportNumber='" + passportNumber + '\'' +
                 ", passengerID='" + passengerID + '\'' +
                 ", gender=" + gender +
-                ", citizenship=" + nationality +
-                ", flights=" + flights +
+                ", nationality=" + nationality +
                 '}';
     }
 }
