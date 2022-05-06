@@ -73,6 +73,7 @@ public class Service {
         } catch(NullPointerException nullPointerException) {
             System.out.println("Error: Unable to add flight. Please try again later. ");
         }
+        System.out.println("The flight has been added successfully!");
         return flight;
     }
 
@@ -105,6 +106,7 @@ public class Service {
                 newFlightList.add(flightCheck);
             }
         }
+        System.out.println("Flight " + testID + " has been removed.");
         bookingSystem.setAllFlights(newFlightList);
         return bookingSystem.getAllFlights();
     }
@@ -114,6 +116,7 @@ public class Service {
     public void displayAvailableFlights() {
         List<Flight> flightList = bookingSystem.getAllFlights();
         System.out.println(flightList);
+        System.out.println("Please see all available flights");
     }
 
     //-------------------------------- Add Passenger Method (Sabina) -------------------------------\\
@@ -145,6 +148,7 @@ public class Service {
             if (count2 == 0) {
                 System.out.println("Please enter your passport number (6 digits):");
                 passportNumber = scanner.nextLine();
+                count2++;
             } else {
                 System.out.println("Error: your passport number should be 6 digits. Please try again.");
                 passportNumber = scanner.nextLine();
@@ -174,7 +178,7 @@ public class Service {
         } catch(NullPointerException nullPointerException) {
             System.out.println("Error: Unable to register passenger. Please try again later. ");
         }
-
+        System.out.println("Passenger has been added successfully");
         return passenger;
     }
 
@@ -203,12 +207,13 @@ public class Service {
             if(!passengerCheck.getPassportNumber().equals(testID)){
                 newPassengerList.add(passengerCheck);
             }
-        }
+        }  System.out.println("Passenger with " + testID + " has been removed.");
+
         bookingSystem.setAllPassengers(newPassengerList);
         return bookingSystem.getAllPassengers();
     }
 
-    //-------------------------------- Book Flight For Passenger Method (Sabina) -------------------------------\\
+    //-------------------------------- Book A Passenger On A Flight Method (Sabina) -------------------------------\\
 
     public void bookPassengerOnFlight(){
         List<Passenger> passengerList = bookingSystem.getAllPassengers();
@@ -227,7 +232,7 @@ public class Service {
             }
         }
 
-        System.out.println("Please enter the flight id you would like to be booked on");
+        System.out.println("Please enter the ID of the flight you'd like to be booked on");
         String flightID = scanner.nextLine();
         Flight flight = null;
 
@@ -250,6 +255,7 @@ public class Service {
                     }
                 }
             }
+
         } else {
             System.out.println("Sorry this flight is fully booked");
         }
