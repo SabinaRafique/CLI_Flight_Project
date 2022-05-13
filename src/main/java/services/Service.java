@@ -15,9 +15,9 @@ import java.util.Scanner;
 public class Service {
 
     BookingSystem bookingSystem = new BookingSystem();
-
     public Service() {
     }
+
 
     //-------------------------------- Add Flight Method (Sabina) -------------------------------\\
 
